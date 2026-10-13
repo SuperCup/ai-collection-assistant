@@ -36,10 +36,47 @@ Agent 型（单个 AI 专家）
 
 ## 内置技能
 
+- `auto-update` —— 自动更新与本地注册刷新（启动时先检查更新，再开始服务）
 - `env-check` —— 环境检测（含 Win/Mac 双平台 Python 脚本，支持 `--json` / `--quick`）
 - `toolchain-setup` —— 工具安装与中转站配置
 - `collection-runbook` —— 采集指令生成与执行引导
 - `faq-troubleshooting` —— 常见问题与解决方案库
+
+## 自动更新（用户侧零操作）
+
+本专家包托管在 GitHub：`https://github.com/SuperCup/ai-collection-assistant`
+
+**每次新会话启动时，专家会自动：**
+
+1. **检查更新** —— 对比本地版本与 GitHub 生产分支（main）的版本
+2. **有更新则自动更新** —— 下载最新专家包并覆盖本地（多源下载，国内网络免代理）
+3. **刷新本地注册** —— 同步本地市场索引信息，保证专家中心展示与最新一致
+4. **热加载最新指令** —— 当前会话立即按最新流程继续，无需重启 WorkBuddy
+5. **然后才开始** —— 进入环境体检、配置、采集的正常流程
+
+**用户无需任何操作**，也无需关心 git。更新失败时静默降级为使用当前版本继续服务，不阻塞使用。
+
+| 特性 | 说明 |
+|------|------|
+| 多源下载 | GitHub 直连失败自动切换国内加速镜像（ghfast.top 等） |
+| 防降级保护 | 本地版本高于远程时拒绝更新，避免通道混用误覆盖 |
+| 只增不删 | 更新只做覆盖+新增，永不删除本地文件（防误删） |
+| 根标记校验 | 更新前校验专家包根完整性，防脚本被误放到异常路径 |
+| 体验通道 | 白名单用户可从 test 开发分支获取体验版 |
+
+## 作者维护（发布新版本）
+
+```bash
+cd <专家包目录>
+git checkout test                    # 默认在 test 开发
+# ... 修改内容 ...
+# 若要发布：更新 .update-version.json 与 plugin.json 的 version 后
+git add -A && git commit -m "..."
+git checkout main && git merge test && git push origin main
+git checkout test
+```
+
+> ⚠️ 发布前务必确认：包内**无密钥、无内部地址、无本机路径**，且 `plugin.json` 与 `.update-version.json` 的 version 一致。
 
 ## 使用示例
 
