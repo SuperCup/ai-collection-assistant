@@ -1,0 +1,18 @@
+# ── Python 编译缓存 ──
+__pycache__/
+*.pyc
+
+# ── 凭据/会话（双保险：即使误拷入本目录也不入库）──
+.env
+.git-credentials
+*.key
+*_token.json
+
+# ── 系统文件 ──
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── 运行产物 ──
+*.log
+update.zip

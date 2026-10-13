@@ -1,0 +1,15 @@
+# 跨平台换行符规范：脚本类文件一律使用 LF
+# （zip 分发给 macOS 用户时，CRLF 会导致 shell 脚本执行失败）
+
+* text=auto eol=lf
+
+# 脚本与配置强制 LF
+*.py   text eol=lf
+*.sh   text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+
+# 二进制文件不做换行符转换
+*.png  binary
+*.jpg  binary
+*.zip  binary

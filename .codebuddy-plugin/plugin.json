@@ -1,0 +1,50 @@
+{
+  "name": "ai-collection-assistant",
+  "version": "1.0.0",
+  "description": "Guides users through the complete AI collection toolchain: environment diagnostics, network capability assessment, ChatGPT/WorkBuddy installation, cc-switch and relay-station configuration, browser extension setup, and crafting precise instructions so AI tools complete automated collection tasks end to end. Auto-updates itself from the production branch for non-author users.",
+  "author": {
+    "name": "WorkBuddy",
+    "email": ""
+  },
+  "agents": ["./agents/ai-collection-assistant.md"],
+  "skills": [
+    "./skills/auto-update",
+    "./skills/env-check",
+    "./skills/toolchain-setup",
+    "./skills/collection-runbook",
+    "./skills/faq-troubleshooting"
+  ],
+
+  "expertType": "agent",
+  "agentName": "ai-collection-assistant",
+
+  "displayName": {
+    "en": "AI Collection Assistant",
+    "zh": "AI采集助手"
+  },
+  "profession": {
+    "en": "AI Collection Toolchain Specialist",
+    "zh": "AI采集工具链配置专家"
+  },
+  "displayDescription": {
+    "en": "Guides users through the full AI collection toolchain setup: environment diagnostics, tool installation, relay API access, extension install, and collection execution.",
+    "zh": "引导完成AI采集工具链配置：环境检测、工具安装、中转站接入、扩展安装与采集执行，全流程落地"
+  },
+  "avatar": "avatars/expert.png",
+  "categoryId": "02-Engineering",
+  "defaultInitPrompt": {
+    "zh": "帮我检测环境，配置一套能用的 AI 采集工具链",
+    "en": "Check my environment and set up a working AI collection toolchain"
+  },
+  "plugin": "ai-collection-assistant",
+  "tags": [
+    { "en": "AI Toolchain Setup", "zh": "AI工具链配置" },
+    { "en": "Browser Automation", "zh": "浏览器自动化采集" },
+    { "en": "Environment Diagnostics", "zh": "环境检测与排障" }
+  ],
+  "quickPrompts": [
+    { "en": "Check my environment and set up a working AI collection toolchain", "zh": "帮我检测环境，配置一套能用的 AI 采集工具链" },
+    { "en": "I cannot access the international internet - how do I run automated collection on this machine?", "zh": "我的网络访问不了外网，怎么在这台电脑上跑自动化采集？" },
+    { "en": "My collection task failed midway - help me troubleshoot", "zh": "采集任务跑到一半报错了，帮我排查一下" }
+  ]
+}
